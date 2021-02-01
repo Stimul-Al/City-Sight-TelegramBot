@@ -1,0 +1,45 @@
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                           http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
+
+    <changeSet id="1.0.0" author="AlexeyBabashev">
+        <sql>
+            create table cities
+            (
+            id   int auto_increment
+            primary key,
+            city varchar(255) null
+            );
+        </sql>
+
+        <sql>
+            create table sights
+            (
+            id          int auto_increment
+            primary key,
+            description varchar(255) null,
+            sight       varchar(255) null,
+            city_id     int          null,
+            constraint FKbeej5ot467s4jvqgt0sirnql5
+            foreign key (city_id) references cities (id)
+            );
+        </sql>
+
+        <sql>
+            create table users
+            (
+            user_id int auto_increment
+            primary key,
+            chat_id int(10) not null,
+            name    varchar(255) not null,
+            state   varchar(255) not null,
+            constraint UK_3g1j96g94xpk3lpxl2qbl985x
+            unique (name)
+            );
+        </sql>
+
+    </changeSet>
+
+</databaseChangeLog>
