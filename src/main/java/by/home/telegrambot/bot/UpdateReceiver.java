@@ -3,6 +3,8 @@ package by.home.telegrambot.bot;
 import by.home.telegrambot.bot.handler.*;
 import by.home.telegrambot.model.User;
 import by.home.telegrambot.repository.UserRepository;
+import lombok.AllArgsConstructor;
+import lombok.Data;
 import org.springframework.stereotype.Component;
 import org.telegram.telegrambots.meta.api.methods.PartialBotApiMethod;
 import org.telegram.telegrambots.meta.api.objects.CallbackQuery;
@@ -14,15 +16,11 @@ import java.util.Collections;
 import java.util.List;
 
 @Component
+@AllArgsConstructor
 public class UpdateReceiver {
 
     private final List<Handler> handlers;
     private final UserRepository userRepository;
-
-    public UpdateReceiver(List<Handler> handlers, UserRepository userRepository) {
-        this.handlers = handlers;
-        this.userRepository = userRepository;
-    }
 
     public List<PartialBotApiMethod<? extends Serializable>> handle(Update update) {
         try {
