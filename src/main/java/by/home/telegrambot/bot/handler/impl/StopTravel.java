@@ -1,7 +1,9 @@
-package by.home.telegrambot.bot.handler;
+package by.home.telegrambot.bot.handler.impl;
 
 import by.home.telegrambot.bot.State;
+import by.home.telegrambot.bot.handler.Handler;
 import by.home.telegrambot.model.User;
+import by.home.telegrambot.repository.UserRepository;
 import by.home.telegrambot.service.StopService;
 import by.home.telegrambot.util.TelegramFunctionsUtil;
 import lombok.RequiredArgsConstructor;
@@ -19,8 +21,12 @@ public class StopTravel implements Handler {
 
     private final StopService stopService;
 
+    private final UserRepository userRepository;
+
     @Override
     public List<PartialBotApiMethod<? extends Serializable>> handle(User user, String message) {
+        user.setState(State.END);
+        userRepository.save(user);
         StopService.setUser(user);
 
         if (message.startsWith(END_TRAVEL)) {

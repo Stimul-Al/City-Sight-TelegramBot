@@ -9,6 +9,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.telegram.telegrambots.meta.api.methods.PartialBotApiMethod;
 import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
+import org.telegram.telegrambots.meta.api.methods.send.SendPhoto;
 
 import java.io.Serializable;
 import java.util.List;
@@ -25,12 +26,12 @@ public class StopService {
     private static User user;
 
     public List<PartialBotApiMethod<? extends Serializable>> endTravel() {
-        String text = "До скорых встреч, мой друг!%nТы всегда можешь начать путешествие снова!";
-        SendMessage partingMessage = createMessageTemplate(user, text,
+        String text = "До скорых встреч, мой друг! *%n Ты всегда можешь начать путешествие снова!";
+
+        SendPhoto sendPhoto = createPhotoTemplate(user, text,
                 createInlineKeyboardMarkup(List.of(
                         createInlineKeyboardButton("Начать путешествие", TRAVEL_START))));
 
-        return List.of(partingMessage);
+        return List.of(sendPhoto);
     }
-
 }

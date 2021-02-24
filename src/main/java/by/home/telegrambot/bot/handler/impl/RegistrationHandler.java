@@ -1,6 +1,7 @@
-package by.home.telegrambot.bot.handler;
+package by.home.telegrambot.bot.handler.impl;
 
 import by.home.telegrambot.bot.State;
+import by.home.telegrambot.bot.handler.Handler;
 import by.home.telegrambot.model.User;
 import by.home.telegrambot.repository.UserRepository;
 import by.home.telegrambot.service.RegistrationService;
@@ -24,13 +25,14 @@ public class RegistrationHandler implements Handler {
 
     @Override
     public List<PartialBotApiMethod<? extends Serializable>> handle(User user, String message) {
+        RegistrationService.setUser(user);
 
         if (message.equalsIgnoreCase(NAME_ACCEPT) || message.equalsIgnoreCase(NAME_CHANGE_CANCEL)) {
-            return registrationService.accept(user);
+            return registrationService.accept();
         } else if (message.equalsIgnoreCase(NAME_CHANGE)) {
-            return registrationService.changeName(user);
+            return registrationService.changeName();
         }
-        return registrationService.checkName(user, message);
+        return registrationService.checkName(message);
     }
 
     @Override

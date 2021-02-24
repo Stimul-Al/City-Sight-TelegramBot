@@ -23,7 +23,16 @@ public class TelegramFunctionsUtil {
      * This functions telegram for helpHandler
      */
     public static final String USER_HELP = "/help";
-    public static final String CREATE_CITY = "/create_city";
     public static final String LIST_CITIES = "/get_cities";
+
+    /**
+     * This function telegram for createHandler
+     */
+    public static final String CREATE_CITY = "/create_city";
+    public static final String SAVE_CITY = "/save_city";
+    public static final String CREATE_SIGHT = "/create_sight";
+    public static final String SAVE_SIGHT = "/save_sight";
+    public static final String ADD_PHOTO = "/add_photo";
+    public static final String SAVE_PHOTO = "/save_photo";
 
 }

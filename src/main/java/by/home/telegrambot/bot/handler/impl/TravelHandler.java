@@ -1,17 +1,12 @@
-package by.home.telegrambot.bot.handler;
+package by.home.telegrambot.bot.handler.impl;
 
 import by.home.telegrambot.bot.State;
-import by.home.telegrambot.model.City;
-import by.home.telegrambot.model.Sight;
+import by.home.telegrambot.bot.handler.Handler;
 import by.home.telegrambot.model.User;
-import by.home.telegrambot.repository.CityRepository;
-import by.home.telegrambot.repository.SightRepository;
-import by.home.telegrambot.repository.UserRepository;
 import by.home.telegrambot.service.TravelService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 import org.telegram.telegrambots.meta.api.methods.PartialBotApiMethod;
-import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
 
 import java.io.Serializable;
 import java.util.List;

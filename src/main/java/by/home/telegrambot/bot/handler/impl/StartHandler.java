@@ -1,6 +1,7 @@
-package by.home.telegrambot.bot.handler;
+package by.home.telegrambot.bot.handler.impl;
 
 import by.home.telegrambot.bot.State;
+import by.home.telegrambot.bot.handler.Handler;
 import by.home.telegrambot.model.User;
 import by.home.telegrambot.repository.UserRepository;
 import by.home.telegrambot.util.TelegramUtil;

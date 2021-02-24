@@ -41,12 +41,20 @@
             <optional>true</optional>
         </dependency>
 
-        <!-- Telegram -->
+        <!-- TelegramBot -->
         <dependency>
             <groupId>org.telegram</groupId>
             <artifactId>telegrambots-spring-boot-starter</artifactId>
             <version>5.0.1</version>
         </dependency>
+
+        <!-- PostrgreSQL -->
+        <dependency>
+            <groupId>org.postgresql</groupId>
+            <artifactId>postgresql</artifactId>
+            <version>42.2.18</version>
+        </dependency>
+
 
         <!-- MySQL -->
         <dependency>

@@ -7,17 +7,14 @@ import java.util.List;
 
 import javax.persistence.*;
 
-@Data
+@Getter
+@Setter
+@Entity
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-@Entity
 @Table(name = "cities")
-public class City {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+public class City extends AbstractBaseEntity {
 
     @Column(name = "city")
     private String city;

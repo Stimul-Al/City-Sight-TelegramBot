@@ -1,6 +1,7 @@
-package by.home.telegrambot.bot.handler;
+package by.home.telegrambot.bot.handler.impl;
 
 import by.home.telegrambot.bot.State;
+import by.home.telegrambot.bot.handler.Handler;
 import by.home.telegrambot.model.City;
 import by.home.telegrambot.model.User;
 import by.home.telegrambot.repository.CityRepository;
@@ -32,8 +33,6 @@ public class HelpHandler implements Handler {
             return helpService.userNameChange();
         } else if (message.startsWith(LIST_CITIES)) {
             return helpService.getListCities();
-        } else if (message.startsWith(CREATE_CITY)) {
-            return helpService.createCity();
         }
         return helpService.menuHelp();
     }

@@ -8,6 +8,6 @@ import org.springframework.transaction.annotation.Transactional;
 @Transactional(readOnly = true)
 public interface SightRepository extends JpaRepository<Sight, Long> {
 
-    @Query(nativeQuery = true, value = "SELECT * FROM sights ORDER BY RAND() LIMIT 1")
+    @Query(nativeQuery = true, value = "SELECT * FROM sights ORDER BY RANDOM() LIMIT 1")
     Sight getRandomSight();
 }

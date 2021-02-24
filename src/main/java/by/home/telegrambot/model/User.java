@@ -5,22 +5,22 @@ import lombok.*;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 
 
 @Entity
-@Table(name = "users")
-@Data
+@Getter
+@Setter
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class User {
+@Table(name = "users", uniqueConstraints = @UniqueConstraint(
+        columnNames = "chat_user_id", name = "users_unique_chatid_idx"))
+public class User extends AbstractBaseEntity{
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer userId;
-
-    @Column(name = "chat_id")
-    private Integer chatId;
+    @NotNull
+    @Column(name = "chat_user_id", unique = true, nullable = false)
+    private Integer chatUserId;
 
     @Column(name = "name", unique = true, nullable = false)
     @NotBlank
@@ -31,8 +31,7 @@ public class User {
     @Column(name = "state", nullable = false)
     private State state;
 
-    public User(int chatId, String name, State state) {
-        this.chatId = chatId;
+    public User(String name, State state) {
         this.name = name;
         this.state = state;
     }

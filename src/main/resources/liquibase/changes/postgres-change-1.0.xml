@@ -1,0 +1,72 @@
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                           http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
+
+    <changeSet id="1.0.0" author="AlexeyBabashev">
+
+        <sql>
+            create sequence global_seq;
+        </sql>
+        <sql>
+            alter sequence global_seq owner to "Alex";
+        </sql>
+
+        <sql>
+            create table cities
+            (
+            id   integer not null
+            constraint cities_pkey
+            primary key,
+            city varchar(255)
+            );
+        </sql>
+        <sql>
+            alter table cities
+            owner to "Alex";
+        </sql>
+
+        <sql>
+            create table sights
+            (
+            id          integer not null
+            constraint sights_pkey
+            primary key,
+            description varchar(255),
+            sight       varchar(255),
+            city_id     integer
+            constraint fkbeej5ot467s4jvqgt0sirnql5
+            references cities
+            );
+        </sql>
+        <sql>
+            alter table sights
+            owner to "Alex";
+        </sql>
+
+        <sql>
+            create table users
+            (
+            id           integer      not null
+            constraint users_pkey
+            primary key,
+            chat_user_id integer      not null
+            constraint uk_fmx0go4iith53fd9mf42skv8l
+            unique,
+            name         varchar(255) not null
+            constraint uk_3g1j96g94xpk3lpxl2qbl985x
+            unique,
+            state        varchar(255) not null
+            );
+        </sql>
+        <sql>
+            alter table users
+            owner to "Alex";
+        </sql>
+
+    </changeSet>
+
+</databaseChangeLog>
+
+

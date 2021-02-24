@@ -4,7 +4,6 @@ import by.home.telegrambot.bot.handler.*;
 import by.home.telegrambot.model.User;
 import by.home.telegrambot.repository.UserRepository;
 import lombok.AllArgsConstructor;
-import lombok.Data;
 import org.springframework.stereotype.Component;
 import org.telegram.telegrambots.meta.api.methods.PartialBotApiMethod;
 import org.telegram.telegrambots.meta.api.objects.CallbackQuery;
@@ -47,7 +46,7 @@ public class UpdateReceiver {
         final int chatId = message.getFrom().getId();
         final String name = message.getFrom().getFirstName();
 
-        return userRepository.findByChatId(chatId)
+        return userRepository.findByChatUserId(chatId)
                 .orElseGet(() -> userRepository.save(new User(chatId, name, State.START)));
     }
 
@@ -55,7 +54,7 @@ public class UpdateReceiver {
         final int chatId = callbackQuery.getFrom().getId();
         final String name = callbackQuery.getFrom().getFirstName();
 
-        return userRepository.findByChatId(chatId)
+        return userRepository.findByChatUserId(chatId)
                 .orElseGet(() -> userRepository.save(new User(chatId, name, State.START)));
     }
 

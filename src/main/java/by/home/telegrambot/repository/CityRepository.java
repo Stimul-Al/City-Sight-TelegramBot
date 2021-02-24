@@ -8,6 +8,6 @@ import org.springframework.transaction.annotation.Transactional;
 @Transactional(readOnly = true)
 public interface CityRepository extends JpaRepository<City, Long> {
 
-    @Query(nativeQuery = true, value = "SELECT * FROM cities ORDER BY RAND() LIMIT 1")
+    @Query(nativeQuery = true, value = "SELECT * FROM cities ORDER BY RANDOM() LIMIT 1")
     City getByRandomCity();
 }
